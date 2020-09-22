@@ -25,15 +25,12 @@ public class AccountAspect {
 	
 	@Before("execution(public void com.aop.demo.service.AccountService.addAccount(..))")
 	public void addSecurity(JoinPoint jp) {
-		
-//		System.out.println(jp.getSignature());
-//		System.out.println(jp.getClass());
-//		System.out.println(jp.getArgs());
-//		System.out.println(jp.getTarget());
-		Object arr[]  = jp.getArgs();
-		Account account = (Account) arr[0];
+	
+		System.out.println(jp.getSignature());
+		System.out.println(jp.getClass());
+		System.out.println(jp.getArgs());
+		System.out.println(jp.getTarget());
 		System.out.println("Security Is Logged");
-		System.out.println(account.getAccountName());
 	}
 	
 	//Filter
@@ -43,8 +40,6 @@ public class AccountAspect {
 		
 		long l1 =  System.currentTimeMillis();
 		System.out.println("Before"+l1);
-		Account account = new Account(103,"Balaji",34500);
-		pjp.proceed(new Object[]{account});
 		long l2 = System.currentTimeMillis();
 		System.out.println("Before"+l2);
 		System.out.println("Time Taken" + (l2-l1));
